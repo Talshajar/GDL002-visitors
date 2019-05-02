@@ -34,12 +34,13 @@ const saveDataVisitors = () => {
   let emailVisitor = document.getElementById("input_Email").value;//Guardando valor de email
   let hostVisitor = document.getElementById("mySelect").value;
   let timeVisitor = document.getElementById("myTime").value;
-  console.log(nameVisitor,lastNameVisitor,emailVisitor,hostVisitor,timeVisitor);
-  window.main.addVisitors(nameVisitor,lastNameVisitor,emailVisitor,hostVisitor,timeVisitor);
+  let camera = document.getElementById("camera()");
+  console.log(nameVisitor,lastNameVisitor,emailVisitor,hostVisitor,timeVisitor,camera);
+  window.main.addVisitors(nameVisitor,lastNameVisitor,emailVisitor,hostVisitor,timeVisitor,camera);
   
   
 };
-document.getElementById("exampleModal3").addEventListener("click", saveDataVisitors);
+document.getElementById("btnVisitors").addEventListener("click", saveDataVisitors);
   
 // Funcion que obtiene informacion de los coworking
 //const userData = () => {
@@ -49,3 +50,32 @@ document.getElementById("exampleModal3").addEventListener("click", saveDataVisit
   // console.log(data);
 //}      
 //document.getElementById("dataCoworking").addEventListener(saveName , userData  );  
+
+// --------------------------- CAMERA --------------------------------------------------
+let player = document.getElementById('player');
+let snapshotCanvas = document.getElementById('canvasCamera');
+let whiskyButton = document.getElementById('takeSelfie-btn');
+
+let handleSuccess = function(stream) {
+  //se concede el permiso y nos da acceso correcto a video con reproduciòn continua
+  player.srcObject = stream;
+};
+
+whiskyButton.addEventListener('click', function() {
+  let context = canvasCamera.getContext('2d');
+  //Aparece el cuadro de video al lienzo.
+  context.drawImage(player, 0, 0, snapshotCanvas.width,
+      snapshotCanvas.height);
+  console.log(context.canvas.toDataURL());
+  
+});
+
+navigator.mediaDevices.getUserMedia({
+      video: true
+  })
+  .then(handleSuccess);
+
+  function foto() {
+    return "context.canvas.toDataURL()";
+
+}

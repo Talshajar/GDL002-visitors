@@ -61,39 +61,32 @@
 <!-- ----------------------------------------------------------------------------------------------  -->
 
 <!----------------------------------------- registro de visitantes ------------------------->
-<main role="main" class="container-fluid" style="margin-top: 64px;">
+<main role="main" class="container-fluid" style="margin-top: 64px;" id="screenVisitors">
 		<div class="row">
 			<div class="col-md-12">
 				<div class="row">
+           <!-------------------------------- CAMERA --------------------------------------->
 					<div class="col-12 col-lg-6">
-						<div class="text-center pt-4 pb-4" style="max-width: 420px;margin: auto;">
+						<div id="camera" class="text-center pt-4 pb-4" style="max-width: 420px;margin: auto;">
 							<h5 class="h3 mb-3 font-weight-normal">Smile!</h5>
 							<p>Although it is not mandatory, it is highly recommended to take a photo so your host can recognize you!</p>
-							
-							<div class="card border-secondary" id="selfie-card" style="max-width: 420px; margin: auto;padding: 16px;">
-								<video autoplay class="card-img-top border bg-secondary" alt="Card image cap"></video>
-								<canvas class="card-img-top border d-none" alt="Card image cap"></canvas>
-
+							<div class="card border-secondary" id="selfie-card" style="max-width: 420px ; margin: auto;padding: 16px;">
+								<video id="player"  autoplay class="card-img-top border bg-secondary" alt="Card image cap"></video>
+								<canvas id="canvasCamera" class="card-img-top border d-none" alt="Card image cap"></canvas>
 								<div class="card-body text-center">
-									<div class="btn-group w-100 pb-2">
-										<a href="#" id="takeSelfie-btn" class="btn btn-primary w-100">
-											<i class="fa fa-camera"></i>
-											<span>Take a Selfie!</span>
-										</a>
-									</div>
-									<div class="btn-group w-100 pb-2 d-none">
-										<a href="#" id="reTakeSelfie-btn" class="btn btn-outline-danger w-100">
-											<i class="fa fa-sync"></i>
-											<span>Repeat</span>
-										</a>
-										<a href="#" id="removeSelfie-btn" class="btn btn-outline-danger">
-											<i class="fa fa-times"></i>
-										</a>
-									</div>
+									
+                  <div class="btn-group w-100 pb-2">
+                      <button id="takeSelfie-btn" class="btn btn-primary w-100">
+                          <i class="fa fa-camera"></i>
+                          <span>Take a Selfie!</span>
+                      </button>
+                    </div>
+								
 								</div>
 							</div>
 						</div>
-					</div>
+          </div>
+          <!------------------------------ PERSONAL INFO ------------------------------------------->
 					<div class="col-12 col-lg-6">
 						<div class="text-center pt-4 pb-4" style="max-width: 420px; margin: auto;" >
 							<h5 class="h3 mb-3 font-weight-normal">Personal Information</h5>
@@ -192,15 +185,17 @@
   
 </section> -->
 <!-- <p id="demo"></p> -->
-<section id="foto">
+<!-- <section id="foto">
 
   <video id="player" controls autoplay></video>
 
 
 </section>
-<button id="whisky" title="Foto de registro"> Tomar Foto 😬 </button>
+<button id="whisky" title="Foto de registro"> Tomar Foto 😬 </button> -->
 <!-- -------------------------------------------------------------------------------------------------- -->
-
+<br>
+<br>
+<br>
 <!--Registro de coworking-->
 <div id="container">
   </div>

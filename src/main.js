@@ -3,8 +3,7 @@
 
 
 // const hiddenLog = () => {
-//   document.getElementById("screenLogin").style.display = "none";
-//   document.getElementById("screenLogUp").style.display = "none";
+//   document.querySelectorAll("container-fluid , modal fade").style.display = "none";
 // }
 
 const signIn = () => {
@@ -30,6 +29,7 @@ const signIn = () => {
 document.getElementById('btnLogIn').addEventListener('click', (event) => {
   event.preventDefault();
   signIn();
+  document.getElementById("screenVisitors").style.display = "none";
   // hiddenLog();
 });
 
@@ -202,7 +202,7 @@ window.main = {
         console.error("Error adding document: ", error);
       });
   },
-  addVisitors : (name,lastName,email,host,time) => {
+  addVisitors : (name,lastName,email,host,time,camera) => {
     console.log('estoy')
     //Agregar coworking
     db.collection("visitors").add({
@@ -210,7 +210,8 @@ window.main = {
         lastName : lastName,
         email: email,
         host: host,
-        time: time
+        time: time,
+        camera: camera
       })
       .then(function (docRef) {
         console.log("Document written with ID: ", docRef.id);
