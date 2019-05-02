@@ -1,0 +1,58 @@
+/* CARD LOGIN */
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,100);
+@import "menu.css";
+@import "modal.css";
+
+
+* {
+  font-family: sans-serif;
+}
+
+header.signup-login {
+  color: white;
+  background-color: rgb(26, 156, 221);
+  padding-top: 15px;
+  padding-bottom: 15px;
+  height: 60px;
+  font-family: sans-serif;
+  font-size: 13px;
+}
+
+
+
+.signup-login button {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  font-size: large;
+  display: flex;
+  padding-right: 5px;
+  padding-left: 5px;
+  border: none;
+  background: none;
+  margin-top: 7px;
+  justify-content: center;
+}
+.clearfix {
+  clear: both;
+}
+.signup-login button {
+  padding-right: 4px;
+  width: 150px;
+  float:right;
+  
+}
+ 
+.signup-login {
+  margin-top: -22px;
+  color: rgba(233,243,255,.8);
+}
+#sign-up-or {
+  display: flex;
+ }
+.wider-signup {
+width: 55px;
+}
+
+#header-text {
+  margin-left: -155px;
+}

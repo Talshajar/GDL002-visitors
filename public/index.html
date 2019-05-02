@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <title>I ■ Host</title>
+    
+</head>
+<body>
+<header class="signup-login">
+    <button data-toggle="modal" data-target="#exampleModal1">log in</button> <button data-toggle="modal" data-target="#exampleModal">sign up or</button>
+</header>
+    
+<!---------------------------------- modal log in ---------------------------------------->
+<div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Log In</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <input id="logInEmail" type="email" name="user" placeholder="Ingresa email">
+            <input id="logInPass" type="password" name="pass" placeholder="Ingresa contraseña">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          <button id="btnLogIn" type="button" class="btn btn-primary">Acceder</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!------------------------------------- modal sign up ---------------------------------->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Sign Up</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <input id="logUpEmail" type="email" name="user" placeholder="Ingresa email">
+            <input id="logUpPass" type="password" name="pass" placeholder="Ingresa contraseña">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          <button id="btnLogUp" type="button" class="btn btn-primary">Acceder</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- ----------------------------------------------------------------------------------------------  -->
+
+<!----------------------------------------- register visitors ------------------------->
+<main role="main" class="container-fluid" style="margin-top: 64px;" id="screenVisitors">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="row">
+           <!-------------------------------- CAMERA --------------------------------------->
+					<div class="col-12 col-lg-6">
+						<div id="camera" class="text-center pt-4 pb-4" style="max-width: 420px;margin: auto;">
+							<h5 class="h3 mb-3 font-weight-normal">Smile!</h5>
+							<p>Although it is not mandatory, it is highly recommended to take a photo so your host can recognize you!</p>
+							<div class="card border-secondary" id="selfie-card" style="max-width: 420px ; margin: auto;padding: 16px;">
+								<video id="player"  autoplay class="card-img-top border bg-secondary" alt="Card image cap"></video>
+								<canvas id="canvasCamera" class="card-img-top border d-none" alt="Card image cap"></canvas>
+								<div class="card-body text-center">
+									
+                  <div class="btn-group w-100 pb-2">
+                      <button id="takeSelfie-btn" class="btn btn-primary w-100">
+                          <i class="fa fa-camera"></i>
+                          <span>Take a Selfie!</span>
+                      </button>
+                    </div>
+								
+								</div>
+							</div>
+						</div>
+          </div>
+          <!------------------------------ PERSONAL INFO ------------------------------------------->
+					<div class="col-12 col-lg-6">
+						<div class="text-center pt-4 pb-4" style="max-width: 420px; margin: auto;" >
+							<h5 class="h3 mb-3 font-weight-normal">Personal Information</h5>
+							<p>In order to announce your arrival we have to ask you some questions ... Do not worry! They will be easy!</p>
+						</div>
+						<form class="form-signup" style="max-width: 420px; margin: auto;" method="POST">
+
+							<div class="form-row">
+								<div class="form-group col-12">
+									<label for="inputFirst_name">First Name</label>
+									<input name="first_name" id="inputFirst_name" class="form-control" placeholder="First name" required="" autofocus="true" type="text">
+								</div>
+							</div>
+
+							<div class="form-row">
+								<div class="form-group col-12">
+									<label for="inputlast_name">Last Name</label>
+									<input name="last_name" id="inputLast_name" class="form-control" placeholder="Last name" required="" type="text">
+								</div>
+							</div>
+
+							<div class="form-row">
+								<div class="form-group col-12">
+									<label for="input_Email">Email address</label>
+									<input name="email" id="input_Email" class="form-control" placeholder="Email address" required="" type="text">
+								</div>
+              </div>
+              
+              <div class="form-row">
+                  <label for="mySelect">Host</label>
+                  <div class="form-group col-12">
+                  <select id="mySelect" >
+                      <option class="form-control"> ¿Who do you visit? </option>
+                      <option class="form-control">Laboratoria</option>
+                      <option class="form-control">Plaza Sania</option>
+                  </select>
+                </div>
+              </div>
+              
+              <div class="form-row">
+                  <label for="myTime">Time</label>
+                  <div class="form-group col-12">
+                  <select id="myTime" >
+                      <option class="form-control"> ¿How long do you plan to be visiting? </option>
+                      <option class="form-control">30 min</option>
+                      <option class="form-control">1 hr</option>
+                      <option class="form-control">2 hr</option>
+                      <option class="form-control">half day</option>
+                      <option class="form-control">all day</option>
+                  </select>
+                </div>
+              </div>
+
+							<div class="form-row">
+								<div class="form-group col-12">
+									<button id="btnVisitors" class="btn btn-lg btn-primary btn-block" type="submit">Save</button>
+								</div>
+							</div>
+
+							<p class="mt-5 mb-3 text-muted text-center">Website by Rocio & Didre</p>
+						</form>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+<!-- -------------------------------------------------------------------------------------------------- -->
+<br>
+<br>
+<br>
+<!--Registro de coworking-->
+<div id="container">
+  </div>
+  <section class="coworking">
+    <h1>Agrega usuario</h1>
+      <input type="text" id="nombre" placeholder="Nombre" >
+      <input type="text" id="email" placeholder="Email" >
+        <select name="selectTurn" id="turn">
+          <option value="empresa" selected>Empresa</option>
+          <option value="freelancer">Freelancer</option>
+        </select>
+      <button class="btn btn-inf" id="boton">Guardar</button>
+
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">id</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Email</th>
+            <th scope="col">Giro</th>
+          </tr>
+        </thead>
+        <tbody id="dataCoworking">
+         
+        </tbody>
+      </table>
+   </section>
+ 
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://www.gstatic.com/firebasejs/5.9.4/firebase.js"></script>
+<script src="firebase.js"></script>
+<script src="modal.js"></script>
+<script src="index.js"></script>
+<script src="main.js"></script>
+<script src="data.js"></script>
+</body>
+</html>
