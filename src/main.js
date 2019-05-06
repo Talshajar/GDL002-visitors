@@ -126,13 +126,59 @@ const wallPaper = (user) => {
   <li title="Kiosko"><button><a href="kiosko.html">Kiosko</a></button></li>
   <li title="LogOut"><button class="navbar-item" id="btnLogOut">Cerrar Sesión</button></li>
 </ul>
+<section class="coworking">
+<h1>Add User</h1>
+  <input type="text" id="nombre" placeholder="Name" >
+  <input type="text" id="email" placeholder="Email" >
+    <select name="selectTurn" id="turn">
+      <option value="empresa" selected>Company</option>
+      <option value="freelancer">Freelancer</option>
+    </select>
+  <button class="btn btn-inf" id="boton">Save</button>
+
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Company</th>
+      </tr>
+    </thead>
+    <tbody id="dataCoworking">
+     
+    </tbody>
+  </table>
+</section>
   `
     document.getElementById('btnLogOut').addEventListener('click', (event) => {
       event.preventDefault();
       // showScreen();
       logOut();
     });
+    document.getElementById("boton").addEventListener("click", (event) => {
+      event.preventDefault();
+      addCoworking();
+    });
   };
+  document.getElementById("dataCoworking");
+
+    db.collection("coworking").onSnapshot((querySnapshot) => {
+      dataCoworking.innerHTML = " " ;
+      querySnapshot.forEach((doc) => {
+        console.log(`${doc.id} => ${doc.data()}`);
+        dataCoworking.innerHTML += `
+        <tr>
+          <th scope="row">1</th>
+          <td>${doc.data().nombre}</td>
+          <td>${doc.data().email}</td>
+          <td>${doc.data().occupation}/td>
+        </tr>
+        `
+       // console.log(showCoworking);
+      });
+    });
+
 };
 
 function Refresh() {
@@ -186,22 +232,40 @@ const checkEmail = () => {
 // Initialize Cloud Firestore 
 const db = firebase.firestore();
 
+const addCoworking = (nombre, email, occupation) => {
+  console.log('estoy')
+  //Agregar coworking
+  db.collection("coworking").add({
+      nombre: nombre,
+      email: email,
+      turn: occupation
+    })
+    .then(function (docRef) {
+      console.log("Document written with ID: ", docRef.id);
+    })
+    .catch(function (error) {
+      console.error("Error adding document: ", error);
+    });
+};
+
+
 window.main = {
-  addCoworking: (nombre, email, occupation) => {
-    console.log('estoy')
-    //Agregar coworking
-    db.collection("coworking").add({
-        nombre: nombre,
-        email: email,
-        turn: occupation
-      })
-      .then(function (docRef) {
-        console.log("Document written with ID: ", docRef.id);
-      })
-      .catch(function (error) {
-        console.error("Error adding document: ", error);
-      });
-  },
+  addCoworking : addCoworking,
+  // addCoworking: (nombre, email, occupation) => {
+  //   console.log('estoy')
+  //   //Agregar coworking
+  //   db.collection("coworking").add({
+  //       nombre: nombre,
+  //       email: email,
+  //       turn: occupation
+  //     })
+  //     .then(function (docRef) {
+  //       console.log("Document written with ID: ", docRef.id);
+  //     })
+  //     .catch(function (error) {
+  //       console.error("Error adding document: ", error);
+  //     });
+  // },
   addVisitors : (name,lastName,email,host,time,camera) => {
     console.log('estoy')
     //Agregar coworking
@@ -224,23 +288,7 @@ window.main = {
   //showCoworking:() => {
     // Mostrar coworking en la interfaz
   //userCoworking: () => {
-  document.getElementById("dataCoworking");
 
-    db.collection("coworking").onSnapshot((querySnapshot) => {
-      dataCoworking.innerHTML = " " ;
-      querySnapshot.forEach((doc) => {
-        console.log(`${doc.id} => ${doc.data()}`);
-        dataCoworking.innerHTML += `
-        <tr>
-          <th scope="row">1</th>
-          <td>${doc.data().nombre}</td>
-          <td>${doc.data().email}</td>
-          <td>${doc.data().occupation}/td>
-        </tr>
-        `
-       // console.log(showCoworking);
-      });
-    });
     
   //}
 //};

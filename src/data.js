@@ -25,7 +25,7 @@ const saveName = () => {
     
     
 };
-document.getElementById("boton").addEventListener("click", saveName);
+
 
 
 const saveDataVisitors = () => {
