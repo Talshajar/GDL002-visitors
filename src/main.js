@@ -1,10 +1,3 @@
-// document.getElementById("screenLogUp").style.display = "none";
-
-
-
-// const hiddenLog = () => {
-//   document.querySelectorAll("container-fluid , modal fade").style.display = "none";
-// }
 
 const signIn = () => {
   let email = document.getElementById("logInEmail").value;
@@ -102,7 +95,7 @@ const observerFb = () => {
       var providerData = user.providerData;
 
       console.log(user.emailVerified);
-
+      console.log(displayName,email,emailVerified,photoURL,uid,providerData,isAnonymous); 
       // ...
     } else {
       // User is signed out.
@@ -119,48 +112,62 @@ const wallPaper = (user) => {
   const container = document.getElementById("container");
   if (user.emailVerified) {
     container.innerHTML = `
-  <h3>HOLA</h3>
+  <h3>HOLAAAAAA</h3>
   <ul class="menu">
   <li title="Registros"><button>Registros</button></li>
   <li title="Estadisticas"><button id="createPost">Estadisticas</button></li>
   <li title="Kiosko"><button><a href="kiosko.html">Kiosko</a></button></li>
   <li title="LogOut"><button class="navbar-item" id="btnLogOut">Cerrar Sesión</button></li>
 </ul>
-<section class="coworking">
-<h1>Add User</h1>
-  <input type="text" id="nombre" placeholder="Name" >
-  <input type="text" id="email" placeholder="Email" >
-    <select name="selectTurn" id="turn">
-      <option value="empresa" selected>Company</option>
-      <option value="freelancer">Freelancer</option>
-    </select>
-  <button class="btn btn-inf" id="boton">Save</button>
 
-  <table class="table">
-    <thead class="thead-dark">
-      <tr>
-        <th scope="col">id</th>
-        <th scope="col">Name</th>
-        <th scope="col">Email</th>
-        <th scope="col">Company</th>
-      </tr>
-    </thead>
-    <tbody id="dataCoworking">
-     
-    </tbody>
-  </table>
-</section>
+<table class="table">
+<thead class="thead-dark">
+  <tr>
+    <th scope="col">id</th>
+    <th scope="col">first Name</th>
+    <th scope="col">Last Name</th>
+    <th scope="col">Email Address</th>
+    <th scope="col">Host</th>
+    <th scope="col">Time Visited</th>
+  </tr>
+</thead>
+<tbody id="dataVisitors">
+ 
+</tbody>
+</table>
   `
     document.getElementById('btnLogOut').addEventListener('click', (event) => {
       event.preventDefault();
       // showScreen();
       logOut();
+      
     });
-    document.getElementById("boton").addEventListener("click", (event) => {
-      event.preventDefault();
-      addCoworking();
-    });
+    // document.getElementById("boton").addEventListener("click", (event) => {
+    //   event.preventDefault();
+    //   addCoworking();
+    //   console.log(1);
+    // });
   };
+  document.getElementById("dataVisitors");
+
+  db.collection("visitors").onSnapshot((querySnapshot) => {
+    // dataVisitors.innerHTML = " " ;
+    querySnapshot.forEach((doc) => {
+      console.log(`${doc.id} => ${doc.data()}`);
+      dataVisitors.innerHTML += `
+      <tr>
+        <th scope="row">1</th>
+        <td>${doc.data().name}</td>
+        <td>${doc.data().lastName}</td>
+        <td>${doc.data().email}</td>
+        <td>${doc.data().host}</td>
+        <td>${doc.data().time}</td>
+      </tr>
+      `
+     // console.log(showCoworking);
+    });
+  });
+
   document.getElementById("dataCoworking");
 
     db.collection("coworking").onSnapshot((querySnapshot) => {
@@ -172,13 +179,12 @@ const wallPaper = (user) => {
           <th scope="row">1</th>
           <td>${doc.data().nombre}</td>
           <td>${doc.data().email}</td>
-          <td>${doc.data().occupation}/td>
+          <td>${doc.data().occupation}</td>
         </tr>
         `
        // console.log(showCoworking);
       });
     });
-
 };
 
 function Refresh() {
@@ -248,9 +254,29 @@ const addCoworking = (nombre, email, occupation) => {
     });
 };
 
+const addVisitors = (name,lastName,email,host,time,camera) => {
+  console.log('estoy')
+  //Agregar coworking
+  db.collection("visitors").add({
+      name: name,
+      lastName : lastName,
+      email: email,
+      host: host,
+      time: time,
+      camera: camera
+    })
+    .then(function (docRef) {
+      console.log("Document written with ID: ", docRef.id);
+    })
+    .catch(function (error) {
+      console.error("Error adding document: ", error);
+    });
+
+}
 
 window.main = {
   addCoworking : addCoworking,
+  addVisitors : addVisitors
   // addCoworking: (nombre, email, occupation) => {
   //   console.log('estoy')
   //   //Agregar coworking
@@ -266,24 +292,24 @@ window.main = {
   //       console.error("Error adding document: ", error);
   //     });
   // },
-  addVisitors : (name,lastName,email,host,time,camera) => {
-    console.log('estoy')
-    //Agregar coworking
-    db.collection("visitors").add({
-        name: name,
-        lastName : lastName,
-        email: email,
-        host: host,
-        time: time,
-        camera: camera
-      })
-      .then(function (docRef) {
-        console.log("Document written with ID: ", docRef.id);
-      })
-      .catch(function (error) {
-        console.error("Error adding document: ", error);
-      });
-  }
+  // addVisitors : (name,lastName,email,host,time,camera) => {
+  //   console.log('estoy')
+  //   //Agregar coworking
+  //   db.collection("visitors").add({
+  //       name: name,
+  //       lastName : lastName,
+  //       email: email,
+  //       host: host,
+  //       time: time,
+  //       camera: camera
+  //     })
+  //     .then(function (docRef) {
+  //       console.log("Document written with ID: ", docRef.id);
+  //     })
+  //     .catch(function (error) {
+  //       console.error("Error adding document: ", error);
+  //     });
+  // }
 };
   //showCoworking:() => {
     // Mostrar coworking en la interfaz
