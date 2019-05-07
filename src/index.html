@@ -10,7 +10,7 @@
     
 </head>
 <body>
-<header class="signup-login">
+<header class="signup-login" id="screenHeader">
     <button data-toggle="modal" data-target="#exampleModal1">log in</button> <button data-toggle="modal" data-target="#exampleModal">sign up or</button>
 </header>
     
@@ -62,7 +62,7 @@
 
 
            <!-------------------------------- CAMERA --------------------------------------->
-           <main role="main" class="container-fluid" style="margin-top: 64px;" id="screenVisitors">          
+      <main role="main" class="container-fluid" style="margin-top: 64px;" id="screenVisitors">          
 					<div class="col-12 col-lg-6">
 						<div id="camera" class="text-center pt-4 pb-4" style="max-width: 420px;margin: auto;">
 							<h5 class="h3 mb-3 font-weight-normal">Smile!</h5>
@@ -84,7 +84,7 @@
 						</div>
           </div>
           <!------------------------------ PERSONAL INFO ------------------------------------------->
-					<div class="col-12 col-lg-6">
+					<div class="col-12 col-lg-6" >
 						<div class="text-center pt-4 pb-4" style="max-width: 420px; margin: auto;" >
 							<h5 class="h3 mb-3 font-weight-normal">Personal Information</h5>
 							<p>In order to announce your arrival we have to ask you some questions ... Do not worry! They will be easy!</p>
@@ -143,7 +143,7 @@
 								</div>
 							</div>
 
-							<p class="mt-5 mb-3 text-muted text-center">Website by Rocio & Didre</p>
+							<footer class="mt-5 mb-3 text-muted text-center">Website by Rocio & Didre</footer>
 						</form>
 
 					</div>
@@ -158,38 +158,13 @@
 <br>
 <br>
 
-<!--Registro de coworking-->
+<!--Screen Wallpaper-->
 <div id="container">
-  </div>
+
+</div>
 <!----------------------------------------- register visitors ------------------------->
 
-		<div class="row">
-			<div class="col-md-12">
-				<div class="row">
-            <section class="coworking">
-                <h1>Add User</h1>
-                  <input type="text" id="nombre" placeholder="Name" >
-                  <input type="text" id="email" placeholder="Email" >
-                    <select name="selectTurn" id="turn">
-                      <option value="empresa" selected>Company</option>
-                      <option value="freelancer">Freelancer</option>
-                    </select>
-                  <button class="btn btn-inf" id="boton">Save</button>
-                
-                  <table class="table">
-                    <thead class="thead-dark">
-                      <tr>
-                        <th scope="col">id</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Company</th>
-                      </tr>
-                    </thead>
-                    <tbody id="dataCoworking">
-                     
-                    </tbody>
-                  </table>
-                </section>
+
  
 
 
@@ -198,7 +173,6 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase.js"></script>
 <script src="firebase.js"></script>
-<script src="modal.js"></script>
 <script src="index.js"></script>
 <script src="main.js"></script>
 <script src="data.js"></script>

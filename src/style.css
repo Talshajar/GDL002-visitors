@@ -55,3 +55,8 @@ width: 55px;
 #header-text {
   margin-left: -155px;
 }
+
+.contentWallPaper {
+  display: flex;
+  margin-left: 100px;
+}

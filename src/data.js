@@ -1,12 +1,3 @@
-const saveName = () => {
-    let nombreCoworking = document.getElementById("nombre").value;//Guardando valor de nombre
-    let emailCoworking = document.getElementById("email").value;//Guardando valor de email
-    let occupationCoworking = document.getElementById("turn").value;
-    console.log(nombreCoworking,emailCoworking,occupationCoworking);
-    window.main.addCoworking(nombreCoworking,emailCoworking,occupationCoworking);
-};
-document.getElementById("boton").addEventListener("click", saveName);
-
 
 const saveDataVisitors = () => {
   let nameVisitor = document.getElementById("inputFirst_name").value;//Guardando valor de nombre
@@ -20,16 +11,20 @@ const saveDataVisitors = () => {
   
   
 };
-document.getElementById("btnVisitors").addEventListener("click", saveDataVisitors);
-  
-// Funcion que obtiene informacion de los coworking
-//const userData = () => {
- //  let data = document.getElementById("dataCoworking");//Guardando informacion del coworking en una variable
-   //document.getElementById("dataCoworking").innerHTML = data;
-  // window.main.userCoworking();
-  // console.log(data);
-//}      
-//document.getElementById("dataCoworking").addEventLis;tener(saveName , userData  );  
+document.getElementById('btnVisitors').addEventListener('click', (event) => {
+  event.preventDefault();
+  saveDataVisitors();
+  clear();
+});
+
+const clear = () => {
+  document.getElementById("inputFirst_name").value = "";
+  document.getElementById("inputLast_name").value = "";
+  document.getElementById("input_Email").value = "";
+  document.getElementById("mySelect").value = "";
+  document.getElementById("myTime").value = "";
+}
+
 
 // --------------------------- CAMERA --------------------------------------------------
 let player = document.getElementById('player');
